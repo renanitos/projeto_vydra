@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% include 'templates/partials/_navbar.html' %}
+{% block content %}
+{% if request.user.is_authenticated %}
+<div class="col-5 mt-4 m-auto">
+
+    {% for msg in messages %}
+    <div class="alert {{msg.tags}} alert-success">
+        {{msg}}
+    </div>
+    {% endfor %}
+
+    <form class="row g-3" action="{% url 'processa_atualizacao_funcionario' funcionario.id %}" method="post">
+        {% csrf_token %}
+        <div class="col-md-6">
+        <label for="inputEmail3" class="form-label">Nome</label>
+        <input type="text" class="form-control" id="primeiro_nome" name="primeiro_nome" value="{{funcionario.primeiro_nome}}">
+        </div>
+        <div class="col-md-6">
+        <label for="inputPassword4" class="form-label">Sobrenome</label>
+        <input type="text" class="form-control" id="sobrenome" name="sobrenome" value="{{funcionario.sobrenome}}">
+        </div>
+        <div class="col-md-12">
+            <label for="inputCity" class="form-label">Email:</label>
+            <input type="text" class="form-control" id="email" placeholder="email@email.com" name="email" value="{{funcionario.email}}">
+            </div>
+        <div class="col-md-5">
+        <label for="inputAddress" class="form-label">CPF:</label>
+        <input type="text" class="form-control" id="cpf" name="cpf" maxlength="11" placeholder="01234567890" value="{{funcionario.cpf}}">
+        </div>
+        <div class="col-md-4">
+            <label for="inputZip" class="form-label">Data de Nascimento:</label>
+            <input type="text" class="form-control" id="data_nascimento" name="data_nascimento" maxlength="10" placeholder="XXXX-XX-XX" value="{{funcionario.data_nascimento}}">
+        </div>
+            </div>
+        <div class="col-5 mt-4 m-auto">
+            </br>
+        <div class="col-2">
+        <label for="inputAddress2" class="form-label">Salário:</label>
+        <input type="text" class="form-control" id="salario" name="salario" maxlength="8" placeholder="4500.50" value="{{funcionario.salario}}">
+        </div>
+        <div class="col-12 mt-2">
+        <button type="submit" class="btn btn-primary">Atualizar</button>
+        </div><br><br>
+        <a href="{% url 'lista_de_funcionarios' %}"><button type="button" class="btn btn-secondary">Voltar</button></a>
+    </form></div>
+    
+
+</div>
+</br>
+{% else %}
+    <h2>Faça login para acessar!</h2></br>
+    <a href="{% url 'login_page' %}"><button>Entrar</button></a>
+{% endif %}
+{% endblock %}
+

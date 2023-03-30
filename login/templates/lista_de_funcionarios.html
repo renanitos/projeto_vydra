@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% include 'templates/partials/_navbar.html' %}
+{% block content %}
+    {% if request.user.is_authenticated %}
+    <div class="col-6 mt-4 m-auto border-radius">
+        <h2>Funcionários</h2></br>
+        <p>Aqui serão exibidos os funcionários da empresa.</p>
+        <a href="{% url 'criar_funcionario'%}"><button type="button" class="btn btn-outline-primary">Cadastrar</button></a>
+        
+        {% if funcionarios %}
+            <h2>Resultados da busca:</h2>
+            <ul>
+              {% for funcionario in funcionarios %}
+                <li class="list-group-item">ID: {{funcionario.id}}  -  
+                <a href="{% url 'modifica_funcionario' funcionario.id %}"><button type="button" class="btn btn-outline-success">Editar</button></a> </li>
+                <li class="list-group-item">Nome: {{funcionario.primeiro_nome}}</li>
+                <li class="list-group-item">Sobrenome: {{funcionario.sobrenome}}</li>
+                <li class="list-group-item">Email: {{funcionario.email}}</li>
+                <li class="list-group-item">CPF: {{funcionario.cpf}}</li><br>
+              {% endfor %}
+            </ul>
+        {% endif %}
+        
+        <ul class="list-group list-group-flush">
+            {% for funcionario in todos_funcionarios %}
+                        <br><li class="list-group-item">ID: {{funcionario.id}}  -  
+                        <a href="{% url 'modifica_funcionario' funcionario.id %}"><button type="button" class="btn btn-outline-success">Editar</button></a> 
+                        <a href="{% url 'deletar_funcionario' funcionario.id %}"><button type="button" class="btn btn-outline-danger">Excluir</button></a>
+                        </li>
+                        <li class="list-group-item">Nome: {{funcionario.primeiro_nome}}</li>
+                        <li class="list-group-item">Sobrenome: {{funcionario.sobrenome}}</li>
+                        <li class="list-group-item">Email: {{funcionario.email}}</li>
+                        <li class="list-group-item">CPF: {{funcionario.cpf}}</li><br>
+            {% endfor %}
+        </ul>
+
+    </div>
+
+    {% else %}
+    <div class="col-6 mt-4 m-auto border-radius">
+        <h2>Faça login para acessar!</h2></br>
+        <a href="{% url 'login_page' %}"><button>Entrar</button></a>
+    </div>
+    {% endif %}
+
+{% endblock %}

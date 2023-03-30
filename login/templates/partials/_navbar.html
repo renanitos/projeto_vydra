@@ -1,0 +1,45 @@
+{% load static %}
+<nav class="navbar">
+  <div class="col-md-12">
+    <ul class="nav container justify-content-center">
+    <li>
+      <a class="navbar-brand" href="{% url 'dashboard'%}"><img src="{% static 'img/vydra.png' %}" alt="Vydra" width="125" height="50"></a> 
+    </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <li class="nav-item ">
+      <a class="nav-link active" aria-current="page" href="{% url 'dashboard'%}">Painel</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'okr'%}">OKR's</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'organograma'%}">Organograma</a>
+  </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <li class="nav-item">
+      <div class="dropdown">
+        <a class="btn dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="{% static 'img/engrenagem.jpg' %}" alt="Painel de controle" width="50" height="50">
+        </a>
+      
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="{% url 'lista_de_funcionarios' %}">Funcionários</a></li>
+        </ul>
+      </div>
+    </li>
+    <li class="nav-item">
+      <div class="dropdown">
+        <a class="btn dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="{% static 'img/perfil_vazio.jpg' %}" alt="Perfil" width="45" height="45">
+        </a>
+      
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="{% url 'perfil' %}">Meu Perfil</a></li>
+          <li><a class="dropdown-item" href="{% url 'mudar_senha' %}">Alterar senha</a></li>
+          <li><a class="dropdown-item" href="{% url 'sair' %}">Sair</a></li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</nav>
+</div>
+</nav>

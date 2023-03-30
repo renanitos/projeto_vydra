@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% include 'templates/partials/_navbar.html' %}
+{% block content %}
+    {% if request.user.is_authenticated %}
+    <div class="col-6 mt-4 m-auto border-radius">
+        <h2>Bem-vindo ao Dashboard!</h2><br>
+        <p >Seja bem-vindo ao seu painél de controle.</p>
+    </div>
+
+    {% else %}
+        <h2>Faça login para acessar!</h2></br>
+        <a href="{% url 'login_page' %}"><button>Entrar</button></a>
+    {% endif %}
+
+{% endblock %}

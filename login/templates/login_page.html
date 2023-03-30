@@ -1,0 +1,23 @@
+{% extends 'base_login.html' %}
+{% block content %}
+
+<div class="col-6 mt-4 m-auto border-radius">
+    <h3>Vydra</h3><br>
+    <h2>Acessar conta</h2><br>
+    <p>Entre na plataforma com seu email e senha cadastrados</p>
+    <form name="formLogin" id="formLogin" method="post" action="{% url 'processa_login' %}">          
+        <div class="col-6 mt-4 m-auto">
+            {% if msg %}
+                <div class="alert {{class}}">
+                    {{msg}}
+                </div>
+            {% endif %}
+            {% csrf_token %}
+            <input class="form-control mt-4" type="text" id="email" name="email" placeholder="Usuário:"><br>
+            <input class="form-control mt-4" type="password" id="password" name="password" placeholder="Senha:"><br>
+            <input class="btn btn-outline-dark mt-4" type="submit" value="Entrar"><br>
+            <a href="#">Esqueceu a senha?</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if request.user.is_authenticated %}
+    <form name="formMudaSenha" id="formMudaSenha" method="post" action="{% url 'processa_senha' %}">          
+        <div class="col-6 mt-4 m-auto">
+            {% if msg %}
+                <div class="alert {{class}}">
+                    {{msg}}
+                </div>
+            {% endif %}
+            {% csrf_token %}
+            <input class="form-control mt-4" type="password" id="password" name="password" placeholder="Senha atual:"><br>
+            <input class="form-control mt-4" type="password" id="new_password" name="new_password" placeholder="Senha nova:"><br>
+            <input class="form-control mt-4" type="password" id="conf_new_password" name="conf_new_password" placeholder="Repita a nova senha:"><br>
+            <input class="btn btn-outline-dark mt-4" type="submit" value="Salvar"><br>
+        </div>
+    </form>
+{% else %}
+    <h2>Faça login para acessar!</h2></br>
+    <a href="{% url 'login_page' %}"><button>Entrar</button></a>
+{% endif %}
+
+
+{% endblock %}
